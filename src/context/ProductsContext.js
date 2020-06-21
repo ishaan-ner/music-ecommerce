@@ -5,7 +5,7 @@ export const ProductsContext = createContext();
 
 const ProductsProvider = (props) => {
   const [productList, setProductList] = useState([]);
-  const [productDetails, setProductDetails] = useState({});
+  const [cart, setCart] = useState({});
 
   // Function to copy the data array containing the product information without mutation
   // This is needed because the data array contains objects, and a simple spread operator will not suffice
@@ -27,24 +27,16 @@ const ProductsProvider = (props) => {
   const addToCart = (id) => {
     let tempProducts = [...productList];
     const index = tempProducts.findIndex((item) => item.id === id);
+    let currentProduct = tempProducts[index];
     tempProducts[index].inCart = true;
+    currentProduct.count = 1;
+    const price = currentProduct.price;
+    currentProduct.total = price;
     setProductList([...tempProducts]);
   };
 
-  const getCurrentProduct = (id) => {
-    const productDetails = productList.find((product) => product.id === id);
-    return productDetails;
-  };
-
-  const handleDetails = (id) => {
-    const productDetails = getCurrentProduct(id);
-    setProductDetails(productDetails);
-  };
-
   return (
-    <ProductsContext.Provider
-      value={{ productList, addToCart, productDetails, handleDetails }}
-    >
+    <ProductsContext.Provider value={{ productList, addToCart }}>
       {props.children}
     </ProductsContext.Provider>
   );

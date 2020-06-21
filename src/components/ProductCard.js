@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const ProductCard = (props) => {
-  const { addToCart, handleDetails } = useContext(ProductsContext);
+  const { addToCart } = useContext(ProductsContext);
   const { id, title, img, price, inCart } = props.product;
   return (
     <Link to={`/${id}`}>
-      <Card onClick={() => handleDetails(id)}>
+      <Card>
         <div className="img-container">
           <img src={img} alt="product" />
 

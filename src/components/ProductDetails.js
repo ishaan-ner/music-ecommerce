@@ -91,4 +91,7 @@ p:first-of-type {
 h3:first-of-type {
   color: var(--text-highlight);
 }
+@media(max-width:900px){
+  flex-direction:column;
+}
 `;
