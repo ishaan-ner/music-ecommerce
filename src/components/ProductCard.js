@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const ProductCard = (props) => {
-  const { addToCart } = useContext(ProductsContext);
+  const { addToCart, openModal } = useContext(ProductsContext);
   const { id, title, img, price, inCart } = props.product;
   return (
     <Link to={`/${id}`}>
@@ -17,6 +17,7 @@ const ProductCard = (props) => {
             onClick={(e) => {
               e.preventDefault();
               addToCart(id);
+              openModal(id);
             }}
             disabled={inCart}
             className="cart-button"
@@ -71,6 +72,7 @@ const CartButton = styled.button`
 const Card = styled.div`
   background-image: var(--gradient-bg);
   z-index: 0;
+  border-radius: 12px;
   padding: 3rem 3rem 0 3rem;
   box-shadow: var(--box-shadow-light);
   cursor: pointer;

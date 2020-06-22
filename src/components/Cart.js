@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ProductsContext } from "../context/ProductsContext";
+import CartTable from "./cart-children/CartTable";
+import PageTitle from "../common/PageTitle";
+import CartCheckout from "./cart-children/CartCheckout";
 
 const Cart = () => {
+  const { cart } = useContext(ProductsContext);
   return (
     <div>
-      <h2 className="text-title">This is the Cart</h2>
+      {cart.length === 0 ? (
+        <PageTitle>Shopping Cart is Empty</PageTitle>
+      ) : (
+        <PageTitle>Shopping Cart</PageTitle>
+      )}
+      <CartTable />
+      <CartCheckout />
     </div>
   );
 };

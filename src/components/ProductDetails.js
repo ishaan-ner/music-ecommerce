@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
-import { NavButton } from "../common/Button";
+import { DetailsButton } from "../common/Button";
 import PageTitle from "../common/PageTitle";
 
 const ProductDetails = () => {
-  const { productList, addToCart } = useContext(ProductsContext);
+  const { productList, addToCart, openModal } = useContext(ProductsContext);
   const match = useParams();
   const currentProduct = productList.find((product) => product.id === match.id);
   return currentProduct ? (
@@ -28,6 +28,7 @@ const ProductDetails = () => {
           <DetailsButton
             onClick={() => {
               addToCart(currentProduct.id);
+              openModal(currentProduct.id);
             }}
             disabled={currentProduct.inCart}
           >
@@ -46,16 +47,6 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
-
-const DetailsButton = styled(NavButton)`
-  letter-spacing: 0.1rem;
-  border-radius: 5px;
-  padding: 0.3rem 0.5rem;
-  margin: 2rem 3rem 0 0;
-  &:disabled {
-    color: var(--text-highlight);
-  }
-`;
 
 const DetailsBox = styled.div`
 display:flex;
