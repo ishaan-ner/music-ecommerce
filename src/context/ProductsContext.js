@@ -98,7 +98,20 @@ const ProductsProvider = (props) => {
   };
 
   const clearCart = () => {
+    let tempProducts = deepCopyData(productList);
+    tempProducts = tempProducts.map((product) => {
+      product.inCart = false;
+      product.total = 0;
+      product.count = 0;
+      return product;
+    });
+    setProductList([...tempProducts]);
     setCart([]);
+  };
+
+  const handlePayment = () => {
+    alert(`Congrats, your payment was successful. Thanks for shopping`);
+    clearCart();
   };
 
   return (
@@ -115,6 +128,7 @@ const ProductsProvider = (props) => {
         decrement,
         removeItem,
         clearCart,
+        handlePayment,
       }}
     >
       {props.children}

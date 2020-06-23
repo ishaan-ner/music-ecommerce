@@ -4,7 +4,7 @@ import { ProductsContext } from "../../context/ProductsContext";
 import { NavButton } from "../../common/Button";
 
 const CartCheckout = () => {
-  const { cart, clearCart } = useContext(ProductsContext);
+  const { cart, clearCart, handlePayment } = useContext(ProductsContext);
 
   const calculateTotals = () => {
     const arrayOfTotals = cart.map((product) => product.total);
@@ -22,7 +22,14 @@ const CartCheckout = () => {
       <p>Subtotal: ${subTotal}</p>
       <p>Tax: ${tax}</p>
       <p>Total: ${total}</p>
-      <CheckOutButton onClick={clearCart}>Clear Cart</CheckOutButton>
+      {cart.length > 0 && (
+        <div>
+          <CheckOutButton onClick={clearCart}>Clear Cart</CheckOutButton>
+          <CheckOutButton color="var(--text-highlight)" onClick={handlePayment}>
+            Check out
+          </CheckOutButton>
+        </div>
+      )}
     </StyledCheckout>
   );
 };
@@ -47,12 +54,12 @@ const StyledCheckout = styled.div`
 `;
 
 const CheckOutButton = styled(NavButton)`
-  background-color: var(--text-danger-dark);
-  margin: 1rem 0;
-  border-radius: 2px;
-  padding: 0.2rem 0.3rem;
+  margin: 1rem 1rem 0 0;
+  border-radius: 5px;
+  padding: 0.4rem 0.5rem;
+  background-color: ${(props) => props.color || "var(--text-danger-dark)"};
   &:hover {
     color: var(--text-primary);
-    background-color: var(--text-danger-light);
+    background-color: ${(props) => props.color || "var(--text-danger-light)"};
   }
 `;
