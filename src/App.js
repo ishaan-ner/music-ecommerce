@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Shop from "./components/Shop";
@@ -14,8 +14,9 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={Shop} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/:id" component={ProductDetails} />
+        <Redirect exact from="/shop" to="/" />
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/shop/:id" component={ProductDetails} />
         <Route path="*" component={PageNotFound} />
       </Switch>
       <Modal />

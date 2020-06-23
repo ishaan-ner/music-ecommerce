@@ -7,6 +7,8 @@
   --text-primary: #ffffff;
   --text-secondary: #bfbfbf;
   --text-highlight: #9bda00;
+  --text-danger-dark: #cd5c5c;
+  --text-danger-light: #d57676;
   --font-family-primary: "Montserrat", sans-serif;
   --font-family-secondary: "Roboto", sans-serif;
 }

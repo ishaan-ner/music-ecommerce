@@ -8,7 +8,7 @@ const ProductCard = (props) => {
   const { addToCart, openModal } = useContext(ProductsContext);
   const { id, title, img, price, inCart } = props.product;
   return (
-    <Link to={`/${id}`}>
+    <Link to={`/shop/${id}`}>
       <Card>
         <div className="img-container">
           <img src={img} alt="product" />
@@ -48,7 +48,6 @@ ProductCard.propTypes = {
 
 const CartButton = styled.button`
   background-color: var(--light-bg);
-  z-index: 1;
   border-radius: 10px;
   padding: 0.3rem 0.4rem;
   border: none;
@@ -71,7 +70,6 @@ const CartButton = styled.button`
 
 const Card = styled.div`
   background-image: var(--gradient-bg);
-  z-index: 0;
   border-radius: 12px;
   padding: 3rem 3rem 0 3rem;
   box-shadow: var(--box-shadow-light);

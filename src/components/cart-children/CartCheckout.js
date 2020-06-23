@@ -47,12 +47,12 @@ const StyledCheckout = styled.div`
 `;
 
 const CheckOutButton = styled(NavButton)`
-  background-color: #cd5c5c;
+  background-color: var(--text-danger-dark);
   margin: 1rem 0;
   border-radius: 2px;
   padding: 0.2rem 0.3rem;
   &:hover {
     color: var(--text-primary);
-    background-color: #d57676;
+    background-color: var(--text-danger-light);
   }
 `;

@@ -87,8 +87,14 @@ const ProductsProvider = (props) => {
 
   const removeItem = (id) => {
     let tempCart = deepCopyData(cart);
+    let tempProducts = deepCopyData(productList);
+    const index = tempProducts.findIndex((product) => product.id === id);
+    tempProducts[index].inCart = false;
+    tempProducts[index].count = 0;
+    tempProducts[index].total = 0;
     tempCart = tempCart.filter((product) => product.id !== id);
     setCart([...tempCart]);
+    setProductList([...tempProducts]);
   };
 
   const clearCart = () => {
