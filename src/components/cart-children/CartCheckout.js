@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { ProductsContext } from "../../context/ProductsContext";
-import { NavButton } from "../../common/Button";
+import { StyledCheckout } from "../../common/StyledComponents";
+import { CheckOutButton } from "../../common/Button";
 
 const CartCheckout = () => {
   const { cart, clearCart, handlePayment } = useContext(ProductsContext);
@@ -35,31 +35,3 @@ const CartCheckout = () => {
 };
 
 export default CartCheckout;
-
-const StyledCheckout = styled.div`
-  background: var(--gradient-bg);
-  box-shadow: var(--box-shadow-light);
-  letter-spacing: 1px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  padding: 1rem 2rem;
-  width: 40%;
-  margin: 2rem 5rem 1rem auto;
-  font-family: var(--font-family-primary);
-  color: var(--text-primary);
-  text-transform: uppercase;
-`;
-
-const CheckOutButton = styled(NavButton)`
-  margin: 1rem 1rem 0 0;
-  border-radius: 5px;
-  padding: 0.4rem 0.5rem;
-  background-color: ${(props) => props.color || "var(--text-danger-dark)"};
-  &:hover {
-    color: var(--text-primary);
-    background-color: ${(props) => props.color || "var(--text-danger-light)"};
-  }
-`;

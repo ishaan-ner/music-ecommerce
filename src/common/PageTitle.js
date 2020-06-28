@@ -12,6 +12,9 @@ const PageTitle = styled.h1`
   @media (max-width: 320px) {
     font-size: 1rem;
   }
+  @media (max-width: 600px) {
+    margin: 1rem;
+  }
 `;
 
 export default PageTitle;
